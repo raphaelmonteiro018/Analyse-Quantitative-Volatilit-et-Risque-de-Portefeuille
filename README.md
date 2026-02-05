@@ -33,7 +33,7 @@ Afin d’assurer une comparabilité parfaite :
 - Annualisation homogène des volatilités.
 
 ## ⚙️ Ingénierie des données & Cible (Y)
-- Construction du rendement composite : Calcul quotidien d'un rendement pondéré (60/35/5) intégrant les variations du S&P 500, des T-Bonds et du panier SAS (sans rendement intégration de rendement DeFi pour le moment).
+- Construction du rendement composite : Calcul quotidien d'un rendement pondéré (60/35/5) intégrant les variations du S&P 500, des T-Bonds à 5 ans et du panier SAS (sans intégration de rendement DeFi pour le moment).
 - Gestion du biais d'initialisation : Ingestion des données dès novembre 2020 pour garantir une variable cible (Y) calculée et stable dès le premier jour de la période d'étude (01/01/2021).
 - Annualisation statistique : Application d'un facteur d'annualisation ($\sqrt{365}$) pour normaliser les volatilités réalisées sur 30 jours glissants.
 

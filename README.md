@@ -1,56 +1,81 @@
-## Navigation
-Pour naviguer entre les différentes étapes du projet, veuillez sélectionner les sous-branches nommées dans l’ordre d’exécution.  
-*(Méthodologie → Modélisation → Benchmark & synthèse)*
-*Insérer capture d’écran de l’arborescence GitHub ici*
-
-## 🏦 Contexte
-Ce projet synthétise l'étude empirique réalisée dans le cadre de mon mémoire de Master (INSEEC PGE - Finance). La problématique centrale repose sur la maîtrise de la volatilité de la valeur liquidative (NAV) dans un environnement de marché instable. Contrairement aux approches spéculatives classiques, l'intéret premier de ce travail consiste à traiter les actifs numériques non pas comme des vecteurs de performance, mais comme des **équivalents-cash numériques**. Cette étude explore la substitution d'une fraction de la poche obligataire par une poche de stablecoins à pondération dynamique afin de déterminer le potentiel de ces nouveaux actifs pour les fonds.
-
-## 💎 Pourquoi les Stablecoins ?
-L'innovation de ce modèle repose sur la création d'une poche **SAS (Stable Aggregated Stablecoins)**. 
-- Alternative aux T-Bonds : Les obligations, bien que sûres à maturité, subissent une volatilité de prix (juste valeur) impactant la NAV quotidienne. Mon travail démontre que le panier SAS présente une volatilité moyenne **8 fois inférieure** à celle des T-Bonds à 5 ans sur la période 2021-2025.
-- Pondération Dynamique : Le panier n'est pas statique, il utilise une pondération basée sur la dominance relative (Market Cap) de l'USDT et de l'USDC. Cette approche offre des propriétés "auto-nettoyantes" face aux crises de confiance (phénomènes de flight-to-safety).
-- Ancre de Liquidité : L'objectif est d'isoler le passage d'un risque de taux vers un risque de parité (depeg), tout en maintenant une exposition constante au risque de marché via la poche actions.
+# 📈 Modélisation Économétrique
 
 ## 🎯 Objectifs
-- Identifier les déterminants de la volatilité du portefeuille et mesurer l’impact relatif de chaque poche sur la volatilité réalisée à 30 jours de la NAV.
-- Tester la décorrélation des sources de risque entre les différentes classes d’actifs.
-- Comparer les comportements selon les régimes de marché en distinguant un régime normal d’un régime de stress.
-- Adopter une logique proche de l’asset management réel, orientée gestion du risque plutôt que rendement théorique.
-- Fournir une méthodologie claire, auditable et reproductible, basée sur un pipeline de données automatisé.
+- Quantifier l’impact moyen et extrême des leviers de risque sur la volatilité réalisée de la NAV (Y).  
+- Identifier les actifs stabilisateurs dans les régimes de marché "croisière" vs "crise".  
+- Fournir une lecture opérationnelle de la résilience de la poche SAS (Stable Aggregated Stablecoins).  
 
-## 🚀 Résultats
-*L'étude démontre que la structure 60-35-5 ne subit pas le marché, elle active des mécanismes de défense endogènes.*
+---
 
-- Le SAS comme "Frein d’Urgence" : Validation statistique d'une contribution négative à la volatilité globale (beta = -0.0325). Le panier de stablecoins n'est pas juste décorrélé, il agit comme un amortisseur de volatilité actif.
-- Mutation du SAS en régime de stress : L'analyse par régression des quantiles (P50 et P90) révèle une montée en puissance de 53% de l'efficacité stabilisatrice du SAS lors des krachs. Plus la pression augmente, plus le SAS protège la NAV.
-- Neutralisation de l'accélération du risque : Tandis que le bêta du S&P 500 s'emballe en période de crise (passant de 0.98 à 1.05), la combinaison T-Bonds + SAS neutralise mécaniquement la contagion de la variable cible (Y = volatilité réalisée à 30j de la NAV).
-- Isolation des dynamiques de queue : Grâce à la régression des quantiles, mon modèle sépare le bruit de marché du risque de queue, prouvant que le risque de dépeg (perte de parité) est statistiquement dominé par le bénéfice qu'apporte la poche SAS en terme de stabilité.
-- Robustesse HC3 : Confirmation des résultats sous conditions d'hétéroscédasticité sévère, garantissant une lecture du risque non biaisée par la variance des résidus.
+## 🔹 Régression Linéaire Multiple (OLS)
 
-## 🔁 Workflow
-1. Construction du portefeuille étudié et définition des pondérations.
-2. Collecte et harmonisation des données macro-financières et de marché sur un calendrier quotidien.
-3. Analyse par les statistiques descriptives : distributions, percentiles et comparaison des niveaux de volatilité.
-4. Modélisation économétrique :
-   - Régression linéaire multiple (OLS) avec erreurs robustes (traitement de l'hétéroscédasticité des résidus via le protocole HC3).
-   - Diagnostics statistiques (hétéroscédasticité, non-normalité).
-   - Régression des quantiles pour isoler le risque de queue.
-5. Interprétation et synthèse des enseignements.
+**Modèle :** OLS robuste (HC3) sur variables standardisées (Z-score)  
+**Variable cible :** `Y_vol_port_30j` — Volatilité réalisée du portefeuille à 30 jours  
 
-## 🏗️ Outils utilisés
-- Python : Pandas, NumPy, Statsmodels
-- SQL : création de queries dans le cadre de requetes API
-- Sources de données :
-  - FRED
-  - Yahoo Finance
-  - Agrégateurs de données de marché
-- Méthodes statistiques :
-  - Statistiques descriptives avancées
-  - OLS robuste
-  - Régression des quantiles
+### Résultats principaux
 
-## 📁 Contenu du projet
-- Étape 1 : Méthodologie, construction du dataset et analyses descriptives.
-- Étape 2 : Modélisation économétrique et interprétation des leviers de risque.
-- Étape 3 : Benchmark de portefeuilles et synthèse risk–return.
+| Variable | β (standardisé) | p-value | Interprétation |
+|----------|----------------|---------|----------------|
+| S&P 500 Vol (30j) | 0,8363 | 0,0000 | Dominance du risque actions |
+| T-Bond Vol (30j) | 0,0043 | 0,7989 | Risque obligataire absorbé |
+| Yield Spread (5Y) | 0,0066 | 0,6931 | Cycle monétaire peu significatif |
+| SAS Volatility (30j) | -0,0325 | 0,0000 | Stabilisateur : effet amortisseur SAS |
+| SAS Liquidity Ratio | -0,0104 | 0,4464 | Liquidity ratio peu significatif |
+| USDT Dominance | -0,0725 | 0,0011 | Flight-to-quality vers stablecoins liquides |
+| Bitcoin Vol (30j) | 0,0823 | 0,0000 | Variable de contrôle, impact positif |
+
+**Diagnostics :**  
+- R² = 0,833 → 83,3 % de la variance expliquée  
+- VIF < 3,1 → Pas de multicolinéarité  
+- Hétéroscédasticité confirmée → justification HC3  
+- Non-normalité des résidus → queues épaisses, nécessité régression des quantiles  
+- Autocorrélation (Durbin-Watson = 0,06) → forte persistance temporelle  
+
+**Enseignements :**  
+- Le risque actions domine le portefeuille.  
+- La poche SAS agit comme stabilisateur actif.  
+- USDT Dominance reflète un mécanisme de flight-to-quality.  
+- Bitcoin capte partiellement le risque crypto lié aux actions tech.
+
+> ⚠️ Limite OLS : Seule la **moyenne** est capturée. Les dynamiques extrêmes nécessitent une approche conditionnelle.
+
+---
+
+## 🔹 Régression des Quantiles
+
+**Objectif :** Isoler le risque de queue et comparer régimes médian (Q0.5) vs stress (Q0.9).  
+
+### Comparaison des leviers
+
+| Variable | β (Q0.5) | Signif. | β (Q0.9) | Signif. | Evolution |
+|----------|-----------|---------|-----------|---------|-----------|
+| S&P 500 Vol (30j) | 0,9822 | *** | 1,0530 | *** | +7,2 % |
+| T-Bond Vol (30j) | -0,0154 | n.s. | -0,0746 | *** | -383,8 % |
+| Yield Spread (5Y) | 0,0172 | n.s. | 0,0338 | ** | +96,3 % |
+| SAS Volatility (30j) | -0,0234 | *** | -0,0359 | *** | -53,0 % |
+| SAS Liquidity Ratio | -0,0193 | *** | -0,0179 | n.s. | +6,9 % |
+| USDT Dominance | -0,0105 | n.s. | -0,0651 | *** | -519,3 % |
+| Bitcoin Vol (30j) | 0,0320 | *** | -0,0305 | *** | -195,1 % |
+
+**Lecture clé :**  
+- Le SAS renforce sa protection en période de stress (-53 %).  
+- L’USDT devient un pilier de stabilité lors des krachs.  
+- La volatilité du T-Bond s’active comme ancre défensive en stress.  
+- Le S&P 500 reste le moteur principal du risque mais est neutralisé par les actifs refuges.  
+
+> Le portefeuille 60-35-5 ne subit pas passivement le marché : la combinaison SAS + T-Bonds agit comme un **frein d’urgence** en période de crise.
+
+---
+
+## 🧠 Enseignements principaux
+- La poche SAS agit comme stabilisateur **asymétrique**, augmentant son efficacité lorsque la pression du marché augmente.  
+- L’analyse par quantiles permet de séparer le bruit de marché du risque de queue et de confirmer le rôle anti-fragile du SAS.  
+- L’approche HC3 garantit des résultats robustes malgré hétéroscédasticité et queues épaisses.  
+- La combinaison actifs classiques (T-Bonds) + numériques (SAS) neutralise mécaniquement l’accélération de la volatilité des actions.  
+
+---
+
+## ➡️ Prochaine étape
+- Intégration des visualisations conditionnelles de stress.  
+- Tests complémentaires sur dynamiques temporelles extrêmes.  
+- Préparation à l’étude de benchmark (portefeuille & ratio risk-return).

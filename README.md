@@ -69,71 +69,46 @@ Les variables évoluant sur des échelles et unités de mesure très différente
 - Interprétation directe des coefficients en sensibilité relative.
 - Comparabilité directe entre les poches du portefeuille.
 
-## 🔍 Analyse de corrélation pré-modélisation
+## 🔍 Analyse de corrélation – Architecture finale du modèle
 
-### Bloc 1 — Actions (proxy risque marché)
+Afin de garantir une structure économétrique stable et interprétable, une matrice de corrélation globale est construite à partir des variables finales sélectionnées.
 
-| Variable | vix_level | vix_var_daily | SP500_vol_30j |
-|-------|-----------|---------------|---------------|
-| vix_level | 1 | 0,195 | 0,679 |
-| vix_var_daily | 0,195 | 1 | -0,063 |
-| SP500_vol_30j | 0,679 | -0,063 | 1 |
+Cette étape permet de :
+- Valider l’absence de colinéarité excessive entre classes d’actifs.
+- Observer les relations préliminaires avec la volatilité de la NAV.
+- Confirmer la pertinence économique des facteurs retenus.
 
-Décision :  
-- Conservation de la variable SP500_vol_30j (cohérence temporelle avec Y).
-- VIX conservé uniquement à titre informatif.
+### Variables retenues
+- **Y_vol_port_30j** : Volatilité réalisée de la NAV du portefeuille (variable cible).
+- **SP500_vol_30j** : Proxy du risque actions.
+- **T-Bond_vol_30j** : Volatilité de la poche obligataire.
+- **Yield_Spread_5Y_Fed** : Baromètre du cycle monétaire.
+- **SAS_Volatility_30j** : Risque spécifique du panier de stablecoins (actifs numériques stables).
+- **SAS_Liquidity_Ratio** : Profondeur et capacité d’absorption du marché des stablecoins.
+- **USDT_Dominance** : Indicateur de concentration du risque sur le marché des stablecoins et sur la poche SAS (pondérée dynamiquement entre USDT/USDC selon cette dominance).
+- **btc_vol_30j** : Variable de contrôle (écosystème crypto global).
 
-### Bloc 2 — Obligations
+### 📊 Matrice de corrélation inter-blocs
 
-| Variable | Yield | Vol 30j | Spread | Fed Rate |
-|--------|-------|---------|--------|----------|
-| Yield | 1 | 0,486 | -0,611 | 0,919 |
-| Vol 30j | 0,486 | 1 | -0,174 | 0,385 |
-| Spread | -0,611 | -0,174 | 1 | -0,874 |
-| Fed Rate | 0,919 | 0,385 | -0,874 | 1 |
+| Variables | Y_vol_port_30j | SP500_vol_30j | T-Bond_vol_30j | Yield_Spread_5Y_Fed | SAS_Volatility_30j | SAS_Liquidity_Ratio | USDT_Dominance | btc_vol_30j |
+|---------|----------------|---------------|----------------|---------------------|--------------------|---------------------|----------------|-------------|
+| **Y_vol_port_30j** | 1 | 0,9071 | 0,4038 | 0,4127 | -0,1548 | -0,0059 | -0,5910 | 0,2709 |
+| **SP500_vol_30j** | 0,9071 | 1 | 0,4624 | 0,3914 | -0,1504 | 0,0010 | -0,5926 | 0,2238 |
+| **T-Bond_vol_30j** | 0,4038 | 0,4624 | 1 | -0,1739 | -0,1359 | -0,0388 | -0,3630 | -0,2086 |
+| **Yield_Spread_5Y_Fed** | 0,4127 | 0,3914 | -0,1739 | 1 | 0,0633 | 0,0583 | -0,6106 | 0,4614 |
+| **SAS_Volatility_30j** | -0,1548 | -0,1504 | -0,1359 | 0,0633 | 1 | 0,0099 | 0,2571 | 0,2728 |
+| **SAS_Liquidity_Ratio** | -0,0059 | 0,0010 | -0,0388 | 0,0583 | 0,0099 | 1 | -0,0361 | 0,0134 |
+| **USDT_Dominance** | -0,5910 | -0,5926 | -0,3630 | -0,6106 | 0,2571 | -0,0361 | 1 | -0,1135 |
+| **btc_vol_30j** | 0,2709 | 0,2238 | -0,2086 | 0,4614 | 0,2728 | 0,0134 | -0,1135 | 1 |
 
-Décision :
-- Exclusion des taux bruts (colinéarité extrême).
-- Conservation des variables Yield_Spread_5Y_Fed et T-Bond_vol_30j.
-
-### Bloc 3 — Actifs numériques stables
-
-| Variable | SAS_vol | Mcap | Volume | Dominance | Liquidity |
-|--------|--------|------|--------|-----------|-----------|
-| SAS_vol | 1 | -0,28 | 0,00 | 0,26 | 0,01 |
-| Volume | 0,00 | 0,00 | 1 | -0,04 | **0,9997** |
-
-Décision :
-- Exclusion du volume brut (colinéarité).
-- Conservation des variables SAS_vol_30j, SAS_Liquidity_Ratio et USDT_Dominance.
-
-### Bloc 4 — Variable de contrôle (test de non-contamination du portefeuille)
-
-| Variable | btc_vol_30j | btc_price |
-|--------|-------------|-----------|
-| btc_vol_30j | 1 | -0,28 |
-| btc_price | -0,28 | 1 |
-
-Décision :
-- Conservation de btc_vol_30j pour la cohérence temporelle avec Y.
-
-## 🔗 Matrice inter-blocs (architecture finale)
-
-| Variable | Corrélation avec Y |
-|--------|--------------------|
-| SP500_vol_30j | **0,91** |
-| T-Bond_vol_30j | 0,40 |
-| Yield_Spread_5Y_Fed | 0,41 |
-| SAS_vol_30j | -0,15 |
-| SAS_Liquidity_Ratio | ~0 |
-| USDT_Dominance | **-0,59** |
-| btc_vol_30j | 0,27 |
-
-## 🧠 Enseignements clés
-- Le risque est **massivement concentré sur la poche actions**.
-- Certaines variables ont une **contribution négative nette** à la volatilité globale.
-- Les effets ne sont **ni linéaires ni symétriques**, surtout en régime de stress.
-- La structure du modèle est **statistiquement saine et auditable**.
+### 🧠 Enseignements clés
+- La volatilité du portefeuille est massivement expliquée par le risque actions (corrélation > 0,90).
+- Le risque obligataire et le cycle monétaire jouent un rôle secondaire mais significatif.
+- Les variables stablecoins (SAS) assimilables à des instruments monétaires présentent :
+  - une **corrélation négative** avec la volatilité de la NAV.
+  - une **faible dépendance** aux marchés traditionnels.
+- La concentration du risque (USDT_Dominance) agit comme un facteur de stabilisation conditionnelle.
+- L’absence de colinéarité excessive valide une modélisation multivariée robuste.
 
 ## ➡️ Prochaine étape
 👉 **Modélisation économétrique**

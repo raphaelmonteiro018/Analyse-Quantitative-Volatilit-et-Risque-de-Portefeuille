@@ -9,7 +9,7 @@ Ce projet synthétise l'étude empirique réalisée dans le cadre de mon mémoir
 ## 💎 Pourquoi les Stablecoins ?
 L'innovation de ce modèle repose sur la création d'une poche **SAS (Stable Aggregated Stablecoins)**. 
 - Alternative aux T-Bonds : Les obligations, bien que sûres à maturité, subissent une volatilité de prix (juste valeur) impactant la NAV quotidienne. Mon travail démontre que le panier SAS présente une volatilité moyenne **8 fois inférieure** à celle des T-Bonds à 5 ans sur la période 2021-2025.
-- Pondération Dynamique : Le panier n'est pas statique ; il utilise une pondération basée sur la dominance relative (Market Cap) de l'USDT et de l'USDC. Cette approche offre des propriétés "auto-nettoyantes" face aux crises de confiance (phénomènes de flight-to-safety).
+- Pondération Dynamique : Le panier n'est pas statique, il utilise une pondération basée sur la dominance relative (Market Cap) de l'USDT et de l'USDC. Cette approche offre des propriétés "auto-nettoyantes" face aux crises de confiance (phénomènes de flight-to-safety).
 - Ancre de Liquidité : L'objectif est d'isoler le passage d'un risque de taux vers un risque de parité (depeg), tout en maintenant une exposition constante au risque de marché via la poche actions.
 
 ## 🎯 Objectifs

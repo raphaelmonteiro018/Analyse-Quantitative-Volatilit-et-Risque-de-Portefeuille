@@ -21,7 +21,7 @@ L’ensemble des séries est récupéré, nettoyé et harmonisé via Python à l
 
 > Le code associé est documenté et accessible dans le dépôt afin de permettre une revue complète de la méthodologie.
 
-## 🗓️ Récupération & Harmonisation temporelle des données
+## 🗓️ Harmonisation temporelle des données
 Les séries étudiées combinent :
 - des marchés traditionnels cotés **5j/7**,
 - des instruments numériques cotés **7j/7**.

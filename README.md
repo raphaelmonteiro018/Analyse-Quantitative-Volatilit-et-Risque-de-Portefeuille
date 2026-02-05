@@ -32,12 +32,12 @@ Afin d’assurer une comparabilité parfaite :
 - Application du procédé LOCF (Last Observation Carried Forward) pour les jours non cotés.
 - Annualisation homogène des volatilités.
 
-## ⚙️ Ingénierie des données & Cible (Y)
+## ⚙️Ingénierie des données & Variable cible (Y)
 - Construction du rendement composite : Calcul quotidien d'un rendement pondéré (60/35/5) intégrant les variations du S&P 500, des T-Bonds à 5 ans et du panier SAS (sans intégration de rendement DeFi pour le moment).
 - Gestion du biais d'initialisation : Ingestion des données dès novembre 2020 pour garantir une variable cible (Y) calculée et stable dès le premier jour de la période d'étude (01/01/2021).
 - Annualisation statistique : Application d'un facteur d'annualisation ($\sqrt{365}$) pour normaliser les volatilités réalisées sur 30 jours glissants.
 
-## 🏗️ Architecture de la poche SAS (Stable Aggregated Stablecoins)
+## 🏗️ Architecture SAS (Stable Aggregated Stablecoins)
 Inspirée de travaux académiques sur la diversification des actifs numériques, la poche SAS est conçue comme un équivalent-cash numérique "auto-nettoyant".
 
 - Composition stratégique : Sélection de l'USDT (Tether) et de l'USDC (Circle). Ces deux actifs représentent ~85% de la capitalisation totale du secteur, constituant ainsi le benchmark de liquidité idéal.

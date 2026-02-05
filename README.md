@@ -1,13 +1,13 @@
 # 📈 Méthodologie & Analyse Descriptive
 
-## 🎯 Objectifs de l'étape
+## 🎯 Objectifs
 - Poser un cadre analytique clair avant toute modélisation.
 - Récupérer et fiabiliser les données.
 - Comprendre les moteurs de la volatilité de la NAV.
 - Vérifier empiriquement l’existence de leviers de stabilisation.
 - Eviter toute interprétation biaisée avant la phase économétrique.
 
-## 🔗 Sources de données & pipeline de récupération
+## 🔗 Sources des données
 Les données utilisées proviennent de sources publiques reconnues pour leur fiabilité et leur usage professionnel :
 
 - Données des marchés traditionnels : indices actions, obligations souveraines et actifs de référence (via Yahoo Finance).
@@ -31,7 +31,7 @@ Afin d’assurer une comparabilité parfaite :
 - Application du procédé LOCF (Last Observation Carried Forward) pour les jours non cotés.
 - Annualisation homogène des volatilités.
 
-## 📊 Validation empirique par les statistiques descriptives
+## 📊 Statistiques descriptives
 
 ### Comparaison des volatilités réalisées (30 jours)
 Période étudiée : **2021 – 2025**
@@ -69,9 +69,9 @@ Les variables évoluant sur des échelles et unités de mesure très différente
 - Interprétation directe des coefficients en sensibilité relative.
 - Comparabilité directe entre les poches du portefeuille.
 
-## 🔍 Analyse de corrélation – Architecture finale du modèle
+## 🔍 Analyse de corrélation
 
-Afin de garantir une structure économétrique stable et interprétable, une matrice de corrélation globale est construite à partir des variables finales sélectionnées.
+Afin de garantir une structure économétrique stable et interprétable, une matrice de corrélation est construite à partir des variables sélectionnées.
 
 Cette étape permet de :
 - Valider l’absence de colinéarité excessive entre classes d’actifs.
@@ -88,7 +88,7 @@ Cette étape permet de :
 - **USDT_Dominance** : Indicateur de concentration du risque sur le marché des stablecoins et sur la poche SAS (pondérée dynamiquement entre USDT/USDC selon cette dominance).
 - **btc_vol_30j** : Variable de contrôle (écosystème crypto global).
 
-### 📊 Matrice de corrélation inter-blocs
+### 📊 Matrice de corrélation
 
 | Variables | Y_vol_port_30j | SP500_vol_30j | T-Bond_vol_30j | Yield_Spread_5Y_Fed | SAS_Volatility_30j | SAS_Liquidity_Ratio | USDT_Dominance | btc_vol_30j |
 |---------|----------------|---------------|----------------|---------------------|--------------------|---------------------|----------------|-------------|
@@ -101,7 +101,7 @@ Cette étape permet de :
 | **USDT_Dominance** | -0,5910 | -0,5926 | -0,3630 | -0,6106 | 0,2571 | -0,0361 | 1 | -0,1135 |
 | **btc_vol_30j** | 0,2709 | 0,2238 | -0,2086 | 0,4614 | 0,2728 | 0,0134 | -0,1135 | 1 |
 
-### 🧠 Enseignements clés
+### 🧠 Enseignements
 - La volatilité du portefeuille est massivement expliquée par le risque actions (corrélation > 0,90).
 - Le risque obligataire et le cycle monétaire jouent un rôle secondaire mais significatif.
 - Les variables stablecoins (SAS) assimilables à des instruments monétaires présentent :

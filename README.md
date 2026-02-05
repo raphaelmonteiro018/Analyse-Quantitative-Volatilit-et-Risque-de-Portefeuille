@@ -37,6 +37,14 @@ Afin d’assurer une comparabilité parfaite :
 - Gestion du biais d'initialisation : Ingestion des données dès novembre 2020 pour garantir une variable cible (Y) calculée et stable dès le premier jour de la période d'étude (01/01/2021).
 - Annualisation statistique : Application d'un facteur d'annualisation ($\sqrt{365}$) pour normaliser les volatilités réalisées sur 30 jours glissants.
 
+## 🏗️ Architecture de la poche SAS (Stable Aggregated Stablecoins)
+Inspirée de travaux académiques sur la diversification des actifs numériques, la poche SAS est conçue comme un équivalent-cash numérique "auto-nettoyant".
+
+- Composition stratégique : Sélection de l'USDT (Tether) et de l'USDC (Circle). Ces deux actifs représentent ~85% de la capitalisation totale du secteur, constituant ainsi le benchmark de liquidité idéal.
+- Pondération dynamique (Market Cap Weighting) : Au lieu d'une répartition fixe (50/50), la poche est rééquilibrée quotidiennement selon la dominance relative de chaque émetteur :$$Poids_{i,t} = \frac{Capitalisation_{i,t}}{\sum Capitalisation_{SAS,t}}$$
+- Gestion active du risque émetteur : Cette méthode permet une allocation "auto-adaptative". Si le marché perd confiance en un émetteur (baisse de sa capitalisation), le modèle réduit mécaniquement l'exposition à cet émetteur au profit de l'autre.
+Note Business : Ce mécanisme reproduit le comportement des Money Market Funds (Fonds monétaires) traditionnels en intégrant un réflexe de Flight-to-Safety (fuite vers la qualité) en temps réel.
+
 ## 📊 Statistiques descriptives
 
 ### Comparaison des volatilités réalisées (30 jours)

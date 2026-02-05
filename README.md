@@ -26,7 +26,7 @@
 - R² = 0,833 → 83,3 % de la variance est expliquée.
 - VIF < 3,1 → Pas de multicolinéarité.
 - Hétéroscédasticité confirmée → justification HC3.
-- Non-normalité des résidus → queues épaisses, nécessité d'appliquer une régression des quantiles.
+- Non-normalité des résidus et présence de queues épaisses → indication que la relation moyenne masque des comportements différenciés selon les régimes de volatilité, justifiant l’usage d’une régression des quantiles.
 
 **Enseignements :**  
 - Le risque actions domine le portefeuille.  
@@ -34,7 +34,7 @@
 - USDT Dominance reflète un mécanisme de flight-to-quality.  
 - Bitcoin capte partiellement le risque crypto lié aux actions tech.
 
-> ⚠️ Limite OLS : Seule la **moyenne** est capturée. Les dynamiques extrêmes nécessitent une approche conditionnelle.
+> ⚠️ Limite OLS : le modèle OLS estime la moyenne conditionnelle de la volatilité (E[Y|X]). Il ne permet pas de capturer l’hétérogénéité des effets selon le niveau de la distribution, ce qui justifie le recours à une régression des quantiles.
 
 ## 🔹 Régression des Quantiles
 

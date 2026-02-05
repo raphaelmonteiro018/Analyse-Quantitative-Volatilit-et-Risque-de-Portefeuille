@@ -77,15 +77,12 @@ L’écart-type (0,81%) confirme que la **variabilité absolue reste marginale**
 
 ## 📏 Standardisation des variables (Z-score)
 
-Les variables évoluant sur des échelles et unités de mesure très différentes, toutes les variables explicatives sont standardisées :
-
+Les variables évoluant sur des échelles et unités de mesure très différentes ces dernières sont standardisées :
 - Transformation en unités d’écart-type.
 - Interprétation directe des coefficients en sensibilité relative.
 - Comparabilité directe entre les poches du portefeuille.
 
 ## 🔍 Analyse de corrélation
-
-Afin de garantir une structure économétrique stable et interprétable, une matrice de corrélation est construite à partir des variables sélectionnées.
 
 Cette étape permet de :
 - Valider l’absence de colinéarité excessive entre classes d’actifs.
@@ -95,9 +92,9 @@ Cette étape permet de :
 ### Variables retenues
 - **Y_vol_port_30j** : Volatilité réalisée de la NAV du portefeuille (variable cible).
 - **SP500_vol_30j** : Proxy du risque actions.
-- **T-Bond_vol_30j** : Volatilité de la poche obligataire.
+- **T-Bond_vol_30j** : Volatilité de la poche obligataire (T-Bonds à 5 ans).
 - **Yield_Spread_5Y_Fed** : Baromètre du cycle monétaire.
-- **SAS_Volatility_30j** : Risque spécifique du panier de stablecoins (actifs numériques stables).
+- **SAS_Volatility_30j** : Risque spécifique du panier de stablecoins (variations liées au peg).
 - **SAS_Liquidity_Ratio** : Profondeur et capacité d’absorption du marché des stablecoins.
 - **USDT_Dominance** : Indicateur de concentration du risque sur le marché des stablecoins et sur la poche SAS (pondérée dynamiquement entre USDT/USDC selon cette dominance).
 - **btc_vol_30j** : Variable de contrôle (écosystème crypto global).

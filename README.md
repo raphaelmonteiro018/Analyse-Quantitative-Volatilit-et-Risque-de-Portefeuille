@@ -1,6 +1,6 @@
 # 📈 Méthodologie & Analyse Descriptive
 
-## 🎯 Objectif de l'étape
+## 🎯 Objectifs de l'étape
 - Poser un cadre analytique clair avant toute modélisation.
 - Récupérer et fiabiliser les données.
 - Comprendre les moteurs de la volatilité de la NAV.

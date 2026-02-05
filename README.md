@@ -20,11 +20,13 @@ L'innovation de ce modèle repose sur la création d'une poche **SAS (Stable Agg
 - Fournir une méthodologie claire, auditable et reproductible, basée sur un pipeline de données automatisé.
 
 ## 🚀 Résultats
-- Dominance du risque action confirmée : la volatilité du marché actions demeure le principal moteur de la variabilité de la NAV.
-- Existence de leviers stabilisateurs : certaines poches présentent une contribution négative et statistiquement significative à la volatilité globale.
-- Décorrélation en période de tension : les sources de risque ne réagissent pas de manière homogène lors des chocs de marché.
-- Renforcement des mécanismes de protection en régime de stress, mis en évidence par l’analyse conditionnelle.
-- Lecture du risque robuste grâce à l’isolation des dynamiques de queue.
+*L'étude démontre que la structure 60-35-5 ne subit pas le marché, elle active des mécanismes de défense endogènes.*
+
+- Le SAS comme "Frein d’Urgence" : Validation statistique d'une contribution négative à la volatilité globale (beta = -0.0325). Le panier de stablecoins n'est pas juste décorrélé, il agit comme un amortisseur de volatilité actif.
+- Mutation du SAS en régime de stress : L'analyse par régression des quantiles (P50 et P90) révèle une montée en puissance de 53% de l'efficacité stabilisatrice du SAS lors des krachs. Plus la pression augmente, plus le SAS protège la NAV.
+- Neutralisation de l'accélération du risque : Tandis que le bêta du S&P 500 s'emballe en période de crise (passant de 0.98 à 1.05), la combinaison T-Bonds + SAS neutralise mécaniquement la contagion de la variable cible (Y = volatilité réalisée à 30j de la NAV).
+- Isolation des dynamiques de queue : Grâce à la régression des quantiles, mon modèle sépare le bruit de marché du risque de queue, prouvant que le risque de dépeg (perte de parité) est statistiquement dominé par le bénéfice qu'apporte la poche SAS en terme de stabilité.
+- Robustesse HC3 : Confirmation des résultats sous conditions d'hétéroscédasticité sévère, garantissant une lecture du risque non biaisée par la variance des résidus.
 
 ## 🔁 Workflow
 1. Construction du portefeuille étudié et définition des pondérations.
@@ -34,7 +36,7 @@ L'innovation de ce modèle repose sur la création d'une poche **SAS (Stable Agg
    - Régression linéaire multiple (OLS) avec erreurs robustes (traitement de l'hétéroscédasticité des résidus via le protocole HC3).
    - Diagnostics statistiques (hétéroscédasticité, non-normalité).
    - Régression des quantiles pour isoler le risque de queue.
-5. Interprétation orientée gestion du risque et synthèse des enseignements.
+5. Interprétation et synthèse des enseignements.
 
 ## 🏗️ Outils utilisés
 - Python : Pandas, NumPy, Statsmodels

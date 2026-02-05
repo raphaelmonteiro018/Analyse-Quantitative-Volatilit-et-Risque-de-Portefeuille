@@ -42,8 +42,8 @@ Inspirée de travaux académiques sur la diversification des actifs numériques,
 
 - Composition stratégique : Sélection de l'USDT (Tether) et de l'USDC (Circle). Ces deux actifs représentent ~85% de la capitalisation totale du secteur, constituant ainsi le benchmark de liquidité idéal.
 - Pondération dynamique (Market Cap Weighting) : Au lieu d'une répartition fixe (50/50), la poche est rééquilibrée quotidiennement selon la dominance relative de chaque émetteur :    $$Poids_{i,t} = \frac{Capitalisation_{i,t}}{\sum Capitalisation_{SAS,t}}$$
-- Gestion active du risque émetteur : Cette méthode permet une allocation "auto-adaptative". Si le marché perd confiance en un émetteur (baisse de sa capitalisation), le modèle réduit mécaniquement l'exposition à cet émetteur au profit de l'autre.
-Note Business : Ce mécanisme reproduit le comportement des Money Market Funds (Fonds monétaires) traditionnels en intégrant un réflexe de Flight-to-Safety (fuite vers la qualité) en temps réel.
+- Gestion active du risque émetteur : Si le marché perd confiance en un émetteur (baisse de sa capitalisation), le modèle réduit mécaniquement son exposition au profit de l'autre.
+> Note : Ce mécanisme reproduit le comportement des Money Market Funds (Fonds monétaires) traditionnels en intégrant un réflexe de Flight-to-Safety (fuite vers la qualité) en temps réel.
 
 ## 📊 Statistiques descriptives
 

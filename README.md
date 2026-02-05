@@ -3,16 +3,8 @@ Pour naviguer entre les différentes étapes du projet, veuillez sélectionner l
 *(Méthodologie → Modélisation → Benchmark & synthèse)*
 *Insérer capture d’écran de l’arborescence GitHub ici*
 
----
-
 ## 🏦 Contexte
-Ce projet synthétise l'étude empirique réalisée dans le cadre de mon mémoire de Master au sein du cursus INSEEC PGE - Finance. Ces travaux s’inscrivent dans une problématique centrale de gestion d’actifs : la maîtrise de la volatilité de la valeur liquidative (NAV) dans un environnement de marché instable.  
-
-La combinaison d’une forte exposition actions, d’un risque de taux accru sur les obligations et de nouvelles formes d’actifs assimilables à des instruments monétaires soulève la question de la robustesse des portefeuilles traditionnels, en particulier lors des phases de stress.
-
-L’objectif n’est pas de rechercher la performance maximale, mais de comprendre les moteurs du risque, d’identifier les leviers de stabilisation et d’évaluer leur efficacité dans une logique réaliste de pilotage de portefeuille (juste valeur, volatilité réalisée, contraintes opérationnelles).
-
----
+Ce projet synthétise mon étude empirique réalisée dans le cadre de mon mémoire de Master au sein du cursus INSEEC PGE - Finance. Ces travaux s’inscrivent dans une problématique centrale de gestion d’actifs : la maîtrise de la volatilité de la valeur liquidative (NAV) dans un environnement de marché instable. L’objectif n’est pas de rechercher la performance maximale, mais de comprendre les moteurs du risque, d’identifier les leviers de stabilisation au sein d'un portefeuille mixte et d’évaluer leur efficacité dans une logique réaliste de pilotage (juste valeur, volatilité réalisée, contraintes opérationnelles).
 
 ## 🎯 Objectifs
 - Identifier les déterminants de la volatilité du portefeuille et mesurer l’impact relatif de chaque poche sur la volatilité réalisée à 30 jours de la NAV.
@@ -21,16 +13,12 @@ L’objectif n’est pas de rechercher la performance maximale, mais de comprend
 - Adopter une logique proche de l’asset management réel, orientée gestion du risque plutôt que rendement théorique.
 - Fournir une méthodologie claire, auditable et reproductible, basée sur un pipeline de données automatisé.
 
----
-
-## 🚀 Résultats clés
+## 🚀 Résultats
 - Dominance du risque action confirmée : la volatilité du marché actions demeure le principal moteur de la variabilité de la NAV.
 - Existence de leviers stabilisateurs : certaines poches présentent une contribution négative et statistiquement significative à la volatilité globale.
 - Décorrélation en période de tension : les sources de risque ne réagissent pas de manière homogène lors des chocs de marché.
 - Renforcement des mécanismes de protection en régime de stress, mis en évidence par l’analyse conditionnelle.
 - Lecture du risque robuste grâce à l’isolation des dynamiques de queue.
-
----
 
 ## 🔁 Workflow
 1. Construction du portefeuille étudié et définition des pondérations.
@@ -42,8 +30,6 @@ L’objectif n’est pas de rechercher la performance maximale, mais de comprend
    - Régression des quantiles pour isoler le risque de queue.
 5. Interprétation orientée gestion du risque et synthèse des enseignements.
 
----
-
 ## 🏗️ Outils utilisés
 - Python : Pandas, NumPy, Statsmodels
 - Sources de données :
@@ -54,8 +40,6 @@ L’objectif n’est pas de rechercher la performance maximale, mais de comprend
   - Statistiques descriptives avancées
   - OLS robuste
   - Régression des quantiles
-
----
 
 ## 📁 Contenu du projet
 - Étape 1 : Méthodologie, construction du dataset et analyses descriptives.

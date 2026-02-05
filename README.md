@@ -32,6 +32,7 @@ Ce projet synthétise mon étude empirique réalisée dans le cadre de mon mémo
 
 ## 🏗️ Outils utilisés
 - Python : Pandas, NumPy, Statsmodels
+- SQL : création de queries dans le cadre de requetes API
 - Sources de données :
   - FRED
   - Yahoo Finance

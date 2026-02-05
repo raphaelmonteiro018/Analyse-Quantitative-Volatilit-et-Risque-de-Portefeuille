@@ -5,8 +5,6 @@
 - Identifier les actifs stabilisateurs dans les régimes de marché "croisière" vs "crise".  
 - Fournir une lecture opérationnelle de la résilience de la poche SAS (Stable Aggregated Stablecoins).  
 
----
-
 ## 🔹 Régression Linéaire Multiple (OLS)
 
 **Modèle :** OLS robuste (HC3) sur variables standardisées (Z-score)  

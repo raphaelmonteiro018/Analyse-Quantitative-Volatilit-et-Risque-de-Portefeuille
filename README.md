@@ -23,11 +23,10 @@
 | Bitcoin Vol (30j) | 0,0823 | 0,0000 | Variable de contrôle, impact positif |
 
 **Diagnostics :**  
-- R² = 0,833 → 83,3 % de la variance expliquée  
-- VIF < 3,1 → Pas de multicolinéarité  
-- Hétéroscédasticité confirmée → justification HC3  
-- Non-normalité des résidus → queues épaisses, nécessité régression des quantiles  
-- Autocorrélation (Durbin-Watson = 0,06) → forte persistance temporelle  
+- R² = 0,833 → 83,3 % de la variance est expliquée.
+- VIF < 3,1 → Pas de multicolinéarité.
+- Hétéroscédasticité confirmée → justification HC3.
+- Non-normalité des résidus → queues épaisses, nécessité d'appliquer une régression des quantiles.
 
 **Enseignements :**  
 - Le risque actions domine le portefeuille.  
@@ -37,15 +36,13 @@
 
 > ⚠️ Limite OLS : Seule la **moyenne** est capturée. Les dynamiques extrêmes nécessitent une approche conditionnelle.
 
----
-
 ## 🔹 Régression des Quantiles
 
-**Objectif :** Isoler le risque de queue et comparer régimes médian (Q0.5) vs stress (Q0.9).  
+**Objectif :** Isoler le risque de queue et comparer régimes médian (P50) vs stress (P90).  
 
-### Comparaison des leviers
+### Comparaison des scénarios
 
-| Variable | β (Q0.5) | Signif. | β (Q0.9) | Signif. | Evolution |
+| Variable | β (P50) | Signif. | β (P90) | Signif. | Evolution |
 |----------|-----------|---------|-----------|---------|-----------|
 | S&P 500 Vol (30j) | 0,9822 | *** | 1,0530 | *** | +7,2 % |
 | T-Bond Vol (30j) | -0,0154 | n.s. | -0,0746 | *** | -383,8 % |
@@ -58,12 +55,10 @@
 **Lecture clé :**  
 - Le SAS renforce sa protection en période de stress (-53 %).  
 - L’USDT devient un pilier de stabilité lors des krachs.  
-- La volatilité du T-Bond s’active comme ancre défensive en stress.  
-- Le S&P 500 reste le moteur principal du risque mais est neutralisé par les actifs refuges.  
+- La volatilité du T-Bond s’active comme ancre défensive lors des stress.  
+- Le S&P 500 reste le moteur principal du risque mais est en partie neutralisé par les actifs refuges.  
 
-> Le portefeuille 60-35-5 ne subit pas passivement le marché : la combinaison SAS + T-Bonds agit comme un **frein d’urgence** en période de crise.
-
----
+> Le portefeuille 60-35-5 ne subit pas passivement le marché : la combinaison SAS + T-Bonds agit comme un **frein qui s'accentue** en période de crise.
 
 ## 🧠 Enseignements principaux
 - La poche SAS agit comme stabilisateur **asymétrique**, augmentant son efficacité lorsque la pression du marché augmente.  
@@ -71,9 +66,8 @@
 - L’approche HC3 garantit des résultats robustes malgré hétéroscédasticité et queues épaisses.  
 - La combinaison actifs classiques (T-Bonds) + numériques (SAS) neutralise mécaniquement l’accélération de la volatilité des actions.  
 
----
-
 ## ➡️ Prochaine étape
 - Intégration des visualisations conditionnelles de stress.  
-- Tests complémentaires sur dynamiques temporelles extrêmes.  
-- Préparation à l’étude de benchmark (portefeuille & ratio risk-return).
+- Tests complémentaires sur les dynamiques temporelles extrêmes.  
+- Réalisation du benchmark.
+- Intégration d'un rendement DeFi sur la poche SAS (uniquement à titre informationnel en raison de l'incertitude règlementaire sur ces sujets).

@@ -1,4 +1,4 @@
-# 🧪 Méthodologie & Analyse Descriptive
+# 📈 Méthodologie & Analyse Descriptive
 
 ## 🎯 Objectif de cette étape
 Cette étape vise à poser un cadre analytique robuste avant toute modélisation, dans une logique proche du **FP&A / Risk Management** :

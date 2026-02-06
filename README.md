@@ -10,17 +10,9 @@
 ## 🔗 Sources des données
 Les données utilisées proviennent de sources publiques reconnues pour leur fiabilité et leur usage professionnel :
 
-- Données des marchés traditionnels : prix de cloture des indices actions, obligations souveraines et actifs de référence (via Yahoo Finance).
-- Données macro-financières : taux d’intérêt, politique monétaire et indicateurs économiques (via FRED).
-- Données des marchés numériques : métriques de marché et de liquidité agrégées à partir de fournisseurs spécialisés (DeFi Llama, Dune Analytics).
-
-L’ensemble des séries est récupéré, nettoyé et harmonisé via Python à l’aide d’un pipeline automatisé :
-- Téléchargement et mise à jour des données via requetage API.
-- Alignement calendaire.
-- Calcul des métriques glissantes pour toute la période étudiée (volatilités, spreads, ratios).
-- Génération des fichiers source au format Excel.
-
-> Le code associé est documenté et accessible dans le dépôt afin de permettre une revue complète de la méthodologie.
+- Marchés traditionnels : Yahoo Finance (S&P 500, Obligations).
+- Macro-finance : FRED (Taux d'intérêt, indicateurs Fed).
+- Marchés numériques : DeFi Llama & Dune Analytics (Mcap, volumes, liquidité).
 
 ## 🗓️ Harmonisation temporelle des données
 Les séries étudiées combinent :
@@ -33,9 +25,11 @@ Afin d’assurer une comparabilité parfaite :
 - Annualisation homogène des volatilités.
 
 ## ⚙️Ingénierie des données & Variable cible (Y)
+- Les séries sont récupérées, nettoyées et harmonisées via Python à l’aide d’un pipeline automatisé comprenant : appels API, alignement calendaire, calcul des métriques glissantes, génération Excel.
 - Construction du rendement composite : Calcul quotidien d'un rendement pondéré (60/35/5) intégrant les variations du S&P 500, des T-Bonds à 5 ans et du panier SAS (sans intégration de rendement DeFi pour le moment).
 - Gestion du biais d'initialisation : Ingestion des données dès novembre 2020 pour garantir une variable cible (Y) calculée et stable dès le premier jour de la période d'étude (01/01/2021).
-- Annualisation statistique : Application d'un facteur d'annualisation ($\sqrt{365}$) pour normaliser les volatilités réalisées sur 30 jours glissants.
+- Annualisation statistique : Application d'un facteur d'annualisation ($\sqrt{365}$) pour normaliser les volatilités réalisées à 30 jours.
+> Le code associé est documenté et accessible dans les pièces-jointes afin de permettre une revue complète de la méthodologie.
 
 ## 🏗️ Architecture SAS (Stable Aggregated Stablecoins)
 Inspirée de travaux académiques sur la diversification des actifs numériques, la poche SAS est conçue comme un équivalent-cash numérique "auto-nettoyant".

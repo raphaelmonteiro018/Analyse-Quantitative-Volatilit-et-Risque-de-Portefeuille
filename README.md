@@ -39,7 +39,7 @@ Inspirée de travaux académiques sur la diversification des actifs numériques,
 - Gestion active du risque émetteur : Si le marché perd confiance en un émetteur (baisse de sa capitalisation), le modèle réduit mécaniquement son exposition au profit de l'autre.
 > Note : Ce mécanisme reproduit le comportement des Money Market Funds en intégrant un réflexe de Flight-to-Safety en temps réel.
 
-## 📊 Statistiques descriptives
+## 📊 Statistiques descriptives refaire le tableau avec les bons chifffres 
 
 ### Comparaison des volatilités réalisées (30 jours)
 Période étudiée : **2021 – 2025**
@@ -62,12 +62,12 @@ Période étudiée : **2021 – 2025**
 
 En termes de **conservation de la valeur**, le panier SAS se comporte comme un instrument monétaire à faible variance, y compris en période de tension.
 
-## 📐 Interprétation du coefficient de variation
+## 📐 Interprétation du coefficient de variation REMETTRE les bonos chiffres
 Le CV élevé du SAS (**115,58%**) est purement mécanique :
 - Moyenne proche de zéro.
 - Rares pics de volatilité.
 
-L’écart-type (0,81%) confirme que la **variabilité absolue reste marginale**. Cette asymétrie justifie le recours ultérieur à des outils conditionnels (quantile regression) plutôt qu’une analyse moyenne.
+L’écart-type (0,82%) confirme que la **variabilité absolue reste marginale**. Cette asymétrie justifie le recours ultérieur à des outils conditionnels (quantile regression) plutôt qu’une analyse moyenne.
 
 ## 📏 Standardisation des variables (Z-score)
 

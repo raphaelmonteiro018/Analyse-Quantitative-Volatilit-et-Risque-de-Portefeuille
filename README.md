@@ -52,5 +52,5 @@ L'innovation de ce modèle repose sur la création d'une poche **SAS (Stable Agg
 
 ## Navigation
 Pour naviguer entre les différentes étapes du projet, veuillez sélectionner les sous-branches nommées dans l’ordre d’exécution.  
-*(Méthodologie → Modélisation → Benchmark & synthèse)*
-*Insérer capture d’écran de l’arborescence GitHub ici*
+<img width="1852" height="542" alt="image" src="https://github.com/user-attachments/assets/14f766c1-9d3e-4fb4-852b-ff1d0115e2df" />
+

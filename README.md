@@ -68,6 +68,6 @@
 
 ## ➡️ Prochaine étape
 - Intégration des visualisations conditionnelles de stress.  
-- Tests complémentaires sur les dynamiques temporelles extrêmes.  
-- Réalisation du benchmark.
+- Tests complémentaires sur les dynamiques temporelles extrêmes.
 - Intégration d'un rendement DeFi sur la poche SAS (uniquement à titre informationnel en raison de l'incertitude règlementaire sur ces sujets).
+- Réalisation du benchmark.

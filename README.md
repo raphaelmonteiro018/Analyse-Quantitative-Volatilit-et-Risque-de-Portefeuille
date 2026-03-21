@@ -39,7 +39,7 @@ Inspirée de travaux académiques sur la diversification des actifs numériques,
 - Gestion active du risque émetteur : Si le marché perd confiance en un émetteur (baisse de sa capitalisation), le modèle réduit mécaniquement son exposition au profit de l'autre.
 > Note : Ce mécanisme reproduit le comportement des Money Market Funds en intégrant un réflexe de Flight-to-Safety en temps réel.
 
-## 📊 Statistiques descriptives refaire le tableau avec les bons chifffres 
+## 📊 Statistiques descriptives
 
 ### Comparaison des volatilités réalisées (30 jours)
 Période étudiée : **2021 – 2025**
@@ -58,16 +58,16 @@ Période étudiée : **2021 – 2025**
 ### 💡 Lecture :
 - La volatilité moyenne du panier SAS est **≈ 8 fois inférieure** à celle des obligations souveraines à 5 ans.
 - Même dans ses **épisodes de stress extrême**, le risque maximal du SAS reste équivalent au **niveau moyen** des T-Bonds.
-- Le **Percentile 90 du SAS (1,11%)** reste très inférieur au **Percentile 10 des T-Bonds (2,97%)**.
+- Le **Quantile 90 du SAS (1,11%)** reste très inférieur au **Quantile 10 des T-Bonds (2,97%)**. La volatilité liée au niveau de stress le plus élevé sur les stablecoins reste inférieure à celle des T-Bonds dans leurs moments les plus "calmes".
 
 En termes de **conservation de la valeur**, le panier SAS se comporte comme un instrument monétaire à faible variance, y compris en période de tension.
 
-## 📐 Interprétation du coefficient de variation REMETTRE les bonos chiffres
+## 📐 Interprétation du coefficient de variation
 Le CV élevé du SAS (**115,58%**) est purement mécanique :
 - Moyenne proche de zéro.
 - Rares pics de volatilité.
 
-L’écart-type (0,82%) confirme que la **variabilité absolue reste marginale**. Cette asymétrie justifie le recours ultérieur à des outils conditionnels (quantile regression) plutôt qu’une analyse moyenne.
+L’écart-type (0,81%) confirme que la **variabilité absolue reste marginale**. Cette asymétrie justifie le recours ultérieur à des outils conditionnels (quantile regression) plutôt qu’une analyse moyenne.
 
 ## 📏 Standardisation des variables (Z-score)
 

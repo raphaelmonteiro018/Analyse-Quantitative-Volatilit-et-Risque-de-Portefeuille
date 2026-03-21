@@ -1,4 +1,4 @@
-# 📈 Modélisation Économétrique
+# 📈 Modélisation
 
 ## 🎯 Objectifs
 - Quantifier l’impact moyen et extrême des leviers de risque sur la volatilité réalisée de la NAV (Y).  
@@ -34,15 +34,15 @@
 - USDT Dominance reflète un mécanisme de flight-to-quality.  
 - Bitcoin capte partiellement le risque crypto lié aux actions tech.
 
-> ⚠️ Limite OLS : le modèle OLS estime la moyenne conditionnelle de la volatilité (E[Y|X]). Il ne permet pas de capturer l’hétérogénéité des effets selon le niveau de la distribution, ce qui justifie le recours à une régression des quantiles.
+> ⚠️ Limite OLS : le modèle OLS estime la moyenne conditionnelle de la volatilité. Il ne permet pas de capturer l’hétérogénéité des effets selon le niveau de la distribution, ce qui justifie le recours à une régression des quantiles.
 
 ## 🔹 Régression des Quantiles
 
-**Objectif :** Isoler le risque de queue et comparer régimes médian (P50) vs stress (P90).  
+**Objectif :** Isoler le risque de queue et comparer régimes médian (Q50) vs stress (Q90).  
 
 ### Comparaison des scénarios
 
-| Variable | β (P50) | Signif. | β (P90) | Signif. | Evolution |
+| Variable | β (Q50) | Signif. | β (Q90) | Signif. | Evolution |
 |----------|-----------|---------|-----------|---------|-----------|
 | S&P 500 Vol (30j) | 0,9822 | *** | 1,0530 | *** | +7,2 % |
 | T-Bond Vol (30j) | -0,0154 | n.s. | -0,0746 | *** | -383,8 % |
@@ -67,7 +67,5 @@
 - La combinaison actifs classiques (T-Bonds) + numériques (SAS) neutralise mécaniquement l’accélération de la volatilité des actions.  
 
 ## ➡️ Prochaine étape
-- Intégration des visualisations conditionnelles de stress.  
-- Tests complémentaires sur les dynamiques temporelles extrêmes.
 - Intégration d'un rendement DeFi sur la poche SAS (uniquement à titre informationnel en raison de l'incertitude règlementaire sur ces sujets).
-- Réalisation du benchmark.
+- Réalisation d'un benchmark comparant plusieurs pondérations.

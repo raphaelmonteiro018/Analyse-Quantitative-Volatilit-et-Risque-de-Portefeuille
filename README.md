@@ -36,7 +36,7 @@ L'objectif est d'isoler le passage d'un risque de taux vers un risque de parité
 
 ## 🏗️ Outils utilisés
 - Python : Pandas, NumPy, Statsmodels
-- SQL : création de queries dans le cadre de requetes API
+- Dune Analytics : extraction de données on-chain via requêtes SQL et API Dune.
 - Sources de données :
   - FRED
   - Yahoo Finance
